@@ -17,7 +17,7 @@
             // |     |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |      |
             // |     |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |      |
             // |     |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |      |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+            //                    | GUI | SPC | symbols |   | numbers | ENT  | ALT |
 
             bindings = <
 &trans  &kp Q  &kp W  &kp E     &kp R      &kp T    &kp Y  &kp U       &kp I      &kp O    &kp P     &trans
@@ -29,40 +29,45 @@
 
         numbers {
             // -----------------------------------------------------------------------------------------
-            // |    |  1  |  2  |  3  |  4  |  (  |   |  )  |  1  |  2  |  3  |     |      |
-            // |    | BT1 | BT2 | BT3 | BT4 |  {  |   |  }  |  4  |  5  |  6  |     |      |
-            // |    |     |     |     |     |  [  |   |  ]  |  7  |  8  |  9  |  0  |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // |    |  F1  |  F2  |  F3  |  F4  |  (  |   |  )  |  1  |  2  |  3  |     |      |
+            // |    |  F5  |  F6  |  F7  |  F8  |  {  |   |  }  |  4  |  5  |  6  |     |      |
+            // |    |  F9  |  F10 |  F11 |  F12 |  [  |   |  ]  |  7  |  8  |  9  |  0  |      |
+            //                    | GUI | SPC | letters |   | symbols | ENT | ALT |
 
             bindings = <
-&trans  &kp F1  &kp F2   &kp F3    &kp F4   &kp LPAR     &kp RPAR  &kp N1  &kp N2    &kp N3  &trans  &trans
-&trans  &kp F5  &kp F6   &kt F7    &kp F8   &kp LBRC     &kp RBRC  &kp N4  &kp N5    &kp N6  &trans  &trans
-&trans  &kp F9  &kp F10  &kp F11   &kp F12  &kp LBKT     &kp RBKT  &kp N7  &kp N8    &kp N9  &kp N0  &trans
-                         &kp LGUI  &to 0    &kp SPACE    &kp RET   &to 2   &kp RALT
+&trans  &kp F1  &kp F2   &kp F3    &kp F4     &kp LPAR     &kp RPAR  &kp N1  &kp N2    &kp N3  &trans  &trans
+&trans  &kp F5  &kp F6   &kt F7    &kp F8     &kp LBRC     &kp RBRC  &kp N4  &kp N5    &kp N6  &trans  &trans
+&trans  &kp F9  &kp F10  &kp F11   &kp F12    &kp LBKT     &kp RBKT  &kp N7  &kp N8    &kp N9  &kp N0  &trans
+                         &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
             >;
         };
 
-        raise_layer {
+        symbols {
             // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |      |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // |      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      |
+            // |      |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |      |
+            // |      |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |      |
+            //                    | GUI | SPC | letters | extras  |  | ENT | ALT |
 
             bindings = <
 &trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
 &trans  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &trans
 &trans  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &trans
-                          &kp LGUI  &to 0     &kp SPACE    &kp RET    &to 3      &kp RALT
+                          &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
             >;
         };
 
-        layer_3 {
+        extras {
+            // -----------------------------------------------------------------------------------------
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI | SPC | letters | trans  |  | ENT | ALT |
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &to 0   &trans    &trans  &trans  &trans
+                        &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
             >;
         };
     };
