@@ -9,6 +9,74 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        copy {
+            bindings = <&kp LG(C)>;
+            key-positions = <26 27>;
+        };
+
+        paste {
+            bindings = <&kp LG(V)>;
+            key-positions = <28 27>;
+        };
+
+        caps_word {
+            bindings = <&caps_word>;
+            key-positions = <29 30>;
+        };
+
+        vol_up {
+            bindings = <&kp C_VOL_UP>;
+            key-positions = <8 20>;
+        };
+
+        vol_down {
+            bindings = <&kp C_VOL_DN>;
+            key-positions = <20 32>;
+        };
+
+        mute {
+            bindings = <&kp K_MUTE>;
+            key-positions = <19 31>;
+        };
+    };
+
+    behaviors {
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            hold-trigger-key-positions = <13>;
+            flavor = "tap-preferred";
+        };
+
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            hold-trigger-key-positions = <13>;
+            flavor = "tap-preferred";
+        };
+
+        bht: bht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BHT";
+            bindings = <&kp>, <&kt>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -20,10 +88,10 @@
             //                    | GUI | SPC | symbols |   | numbers | ENT  | ALT |
 
             bindings = <
-&trans  &kp Q  &kp W  &kp E     &kp R      &kp T    &kp Y  &kp U       &kp I      &kp O    &kp P     &trans
-&trans  &kp A  &kp S  &kp D     &kp F      &kp G    &kp H  &kp J       &kp K      &kp L    &kp SEMI  &trans
-&trans  &kp Z  &kp X  &kp C     &kp V      &kp B    &kp N  &kp M       &kp COMMA  &kp DOT  &kp FSLH  &trans
-                      &kp LGUI  &kp SPACE  &to 2    &to 1  &kp RETURN  &kp RALT
+&trans  &bht GRAVE Q   &kp W         &bht ESC E     &kp R        &kp T    &kp Y  &kp U        &kp I        &kp O         &kp P             &trans
+&trans  &hml LSHIFT A  &hml LCTRL S  &hml LALT D    &hml LGUI F  &kp G    &kp H  &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHIFT SEMI  &trans
+&trans  &bht TAB Z     &kp X         &kp C          &kp V        &kp B    &kp N  &kp M        &kp COMMA    &kp DOT       &kp FSLH          &trans
+                                     &kp BACKSPACE  &kp SPACE    &to 2    &to 1  &kp RETURN   &kp RALT
             >;
         };
 
@@ -35,10 +103,10 @@
             //                    | GUI | SPC | letters |   | symbols | ENT | ALT |
 
             bindings = <
-&trans  &kp F1  &kp F2   &kp F3    &kp F4     &kp LPAR     &kp RPAR  &kp N1  &kp N2    &kp N3  &trans  &trans
-&trans  &kp F5  &kp F6   &kt F7    &kp F8     &kp LBRC     &kp RBRC  &kp N4  &kp N5    &kp N6  &trans  &trans
-&trans  &kp F9  &kp F10  &kp F11   &kp F12    &kp LBKT     &kp RBKT  &kp N7  &kp N8    &kp N9  &kp N0  &trans
-                         &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
+&trans  &kp F1  &kp F2   &kp F3    &kp F4     &kp LPAR    &kp RPAR  &kp N1   &kp N2    &kp N3  &trans  &trans
+&trans  &kp F5  &kp F6   &kt F7    &kp F8     &kp LBRC    &kp RBRC  &kp N4   &kp N5    &kp N6  &trans  &trans
+&trans  &kp F9  &kp F10  &kp F11   &kp F12    &kp LBKT    &kp RBKT  &kp N7   &kp N8    &kp N9  &kp N0  &trans
+                         &kp LGUI  &kp SPACE  &to 0       &trans    &kp RET  &kp RALT
             >;
         };
 
@@ -50,10 +118,10 @@
             //                    | GUI | SPC | letters | extras  |  | ENT | ALT |
 
             bindings = <
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
-&trans  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &trans
-&trans  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &trans
-                          &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
+&trans  &trans    &trans  &trans    &trans     &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &trans
+&trans  &trans    &trans  &trans    &trans     &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &trans
+                          &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET    &kp RALT
             >;
         };
 
@@ -63,11 +131,12 @@
             // |      |     |     |     |     |     |   |     |     |     |     |     |      |
             // |      |     |     |     |     |     |   |     |     |     |     |     |      |
             //                    | GUI | SPC | letters | trans  |  | ENT | ALT |
+
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET &kp RALT
+&trans  &trans  &trans  &trans    &trans     &trans    &trans  &trans   &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans     &trans    &trans  &trans   &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans     &trans    &trans  &trans   &trans    &trans  &trans  &trans
+                        &kp LGUI  &kp SPACE  &to 0     &trans  &kp RET  &kp RALT
             >;
         };
     };
