@@ -91,7 +91,7 @@
 &trans  &bht GRAVE Q   &kp W         &bht ESC E     &kp R        &kp T    &kp Y  &kp U        &kp I        &kp O         &kp P             &trans
 &trans  &hml LSHIFT A  &hml LCTRL S  &hml LALT D    &hml LGUI F  &kp G    &kp H  &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHIFT SEMI  &trans
 &trans  &bht TAB Z     &kp X         &kp C          &kp V        &kp B    &kp N  &kp M        &kp COMMA    &kp DOT       &kp FSLH          &trans
-                                     &kp BACKSPACE  &kp SPACE    &to 2    &to 1  &kp RETURN   &kp RALT
+                                     &kp BACKSPACE  &kp SPACE    &to 2    &to 1  &kp SPACE    &kp RET
             >;
         };
 
