@@ -63,7 +63,7 @@
         tilde {
             bindings = <&kp GRAVE>;
             key-positions = <2 3>;
-            layers = <0>
+            layers = <0>;
         };
 
         esc {
