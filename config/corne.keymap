@@ -6,16 +6,19 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#include "keys/36.h"
+
 
 /*                KEY POSITIONS
 
-  ╭───────────────────–––––─╮ ╭────────────────––––────╮
-  │  0   1   2   3   4   5  | |  6   7   8   9  10  11 │
-  │ 12  13  14  15  16  17  | | 18  19  20  21  22  23 │
-  │ 24  25  26  27  28  29  │ │ 30  31  32  33  34  35 │
-  ╰───────––––– 36  37  38  │ │ 39  40  41 ╭─––––──────╯
-               ╰─–––──────–─╯ ╰──––––──────╯            */
+  ╭─────────────────────╮ ╭────────────────────╮
+  │  0   1   2   3   4  | | 5   6   7   8   9  │
+  │ 10  11  12  13  14  | | 15  16  17  18  19 │
+  │ 20  21  22  23  24  │ │ 25  26  27  28  29 │
+  ╰──────––╮30  31  32  │ │ 33  34  35 ╭───────╯
+           ╰───────–---─╯ ╰──––––──────╯            */
 
 / {
     combos {
@@ -119,46 +122,46 @@
         compatible = "zmk,keymap";
 
         ABC {
-            // -----------------------------------------------------------------------------------------
-            // |     |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |      |
-            // |     |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |      |
-            // |     |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |      |
-            //                    | GUI | BACK | NUM |   | SYM | SPACE  | RET |
+            // -------------------------------------------------------------------
+            // |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P   |
+            // |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;   |
+            // |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /   |
+            //             | GUI | BACK | NUM |   | SYM | SPACE  | RET |
 
             bindings = <
-&trans  &bht N1 Q      &bht N2 W     &bht N3 E    &bht N4 R      &bht N5 T                  &bht N6 Y                 &bht N7 U    &bht N8 I    &bht N9 O     &bht N0 P         &trans
-&trans  &hml LSHIFT A  &hml LCTRL S  &hml LALT D  &hml LGUI F    &bht LEFT_BRACE G          &bht RIGHT_BRACE H        &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHIFT SEMI  &trans
-&trans  &bht TAB Z     &kp X         &kp C        &kp V          &bht LEFT_PARENTHESIS B    &bht RIGHT_PARENTHESIS N  &kp M        &kp COMMA    &kp DOT       &kp FSLH          &trans
+  &bht N1 Q      &bht N2 W     &bht N3 E    &bht N4 R      &bht N5 T                  &bht N6 Y                 &bht N7 U    &bht N8 I    &bht N9 O     &bht N0 P         
+  &hml LSHIFT A  &hml LCTRL S  &hml LALT D  &hml LGUI F    &bht LEFT_BRACE G          &bht RIGHT_BRACE H        &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHIFT SEMI  
+  &bht TAB Z     &kp X         &kp C        &kp V          &bht LEFT_PARENTHESIS B    &bht RIGHT_PARENTHESIS N  &kp M        &kp COMMA    &kp DOT       &kp FSLH          
                                      &kp LGUI     &kp BACKSPACE  &to 1                      &to 2                     &kp SPACE    &kp RETURN
             >;
         };
 
         NUM {
-            // -----------------------------------------------------------------------------------------
-            // |    |  F1  |  F2  |  F3  |  F4  |  (  |   |  )  |  1  |  2  |  3  |     |      |
-            // |    |  F5  |  F6  |  F7  |  F8  |  {  |   |  }  |  4  |  5  |  6  |     |      |
-            // |    |  F9  |  F10 |  F11 |  F12 |  [  |   |  ]  |  7  |  8  |  9  |  0  |      |
-            //                    | GUI | SPC | ABC |   | SHIFT | ENT | ALT |
+            // --------------------------------------------------------------------------
+            // |  F1  |  F2  |  F3  |  F4  |  (  |   |  )  |  1  |  2  |  3  |     |
+            // |  F5  |  F6  |  F7  |  F8  |  {  |   |  }  |  4  |  5  |  6  |     |
+            // |  F9  |  F10 |  F11 |  F12 |  [  |   |  ]  |  7  |  8  |  9  |  0  |
+            //               | GUI | SPC | ABC |   | SHIFT | ENT | ALT |
 
             bindings = <
-&trans  &kp F1  &kp F2   &kp F3    &kp F4     &kp LPAR    &kp RPAR   &kp N1   &kp N2    &kp N3  &trans  &trans
-&trans  &kp F5  &kp F6   &kt F7    &kp F8     &kp LBRC    &kp RBRC   &kp N4   &kp N5    &kp N6  &trans  &trans
-&trans  &kp F9  &kp F10  &kp F11   &kp F12    &kp LBKT    &kp RBKT   &kp N7   &kp N8    &kp N9  &kp N0  &trans
+  &kp F1  &kp F2   &kp F3    &kp F4     &kp LPAR    &kp RPAR   &kp N1   &kp N2    &kp N3  &trans  
+  &kp F5  &kp F6   &kt F7    &kp F8     &kp LBRC    &kp RBRC   &kp N4   &kp N5    &kp N6  &trans  
+  &kp F9  &kp F10  &kp F11   &kp F12    &kp LBKT    &kp RBKT   &kp N7   &kp N8    &kp N9  &kp N0  
                          &kp LGUI  &kp SPACE  &to 0       &kp LSHFT  &kp RET  &kp RALT
             >;
         };
 
         SYM {
             // -----------------------------------------------------------------------------------------
-            // |      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      |
-            // |      |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |      |
-            // |      |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |      |
-            //                    | GUI | SPC | letters | extras  |  | ENT | ALT |
+            // |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |
+            // |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |
+            // |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |
+            //         | GUI | SPC | letters | extras  |  | ENT | ALT |
 
             bindings = <
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
-&trans  &trans    &trans  &trans    &trans     &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &trans
-&trans  &trans    &trans  &trans    &trans     &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &trans
+  &kp EXCL  &kp AT  &kp HASH  &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  
+  &trans    &trans  &trans    &trans     &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  
+  &trans    &trans  &trans    &trans     &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  
                           &kp LGUI  &kp SPACE  &to 0        &trans     &kp RET    &kp RALT
             >;
         };
